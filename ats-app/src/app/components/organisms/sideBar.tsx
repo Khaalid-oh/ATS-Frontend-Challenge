@@ -4,9 +4,9 @@ import { HomeOutlined } from "@ant-design/icons";
 import { ContainerOutlined } from "@ant-design/icons";
 import Dp from "../atoms/dp";
 
-function SideNav() {
+function SideBar() {
   return (
-    <div className="h-full w-20 shadow-lg flex items-center flex-col justify-between py-8">
+    <div className="h-[200vh] w-20 shadow-lg flex items-center flex-col space-y-[520px] py-8">
       <div className="flex flex-col gap-16">
         <div>
           <MenuOutlined style={{ fontSize: "19px" }} />
@@ -23,4 +23,4 @@ function SideNav() {
   );
 }
 
-export default SideNav;
+export default SideBar;
