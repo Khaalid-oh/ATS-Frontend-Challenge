@@ -1,11 +1,55 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 
 import FormSection from "./formSection";
 import { UploadOutlined } from "@ant-design/icons";
 import AddSign from "../atoms/addSign";
 import ToggleField from "../atoms/ToggleField";
+import { Dropdown } from "antd-mobile";
+import Questions from "../atoms/Questions";
 
 const MainForm = () => {
+
+  const attributes = {
+    coverImage: "",
+    personalInformation: {
+      firstName: {
+        internalUse: false,
+        show: true,
+      },
+      lastName: {
+        internalUse: false,
+        show: true,
+      },
+      emailId: {
+        internalUse: false,
+        show: true,
+      },
+      phoneNumber: {
+        internalUse: false,
+        show: true,
+      },
+      nationality: {
+        internalUse: false,
+        show: true,
+      },
+      currentResidence: {
+        internalUse: false,
+        show: true,
+      },
+      idNumber: {
+        internalUse: false,
+        show: true,
+      },
+      dateOfBirth: {
+        internalUse: false,
+        show: true,
+      },
+      gender: {
+        internalUse: false,
+        show: true,
+      },
+    },
+  };
   const personInfo = [
     { label: "First Name" },
     { label: "Last Name" },
@@ -27,13 +71,33 @@ const MainForm = () => {
     { label: "Resume", type: "toggle-field" },
   ];
 
+  const [showDropdown, setShowDropdown] = useState(false);
+
+  const [extraFields, setExtraFields] = useState<string[]>([]);
 
   const [coverImage, setCoverImage] = useState(null);
 
+  const handleAddSignClick = () => {
+    setShowDropdown;
+    setShowDropdown(!showDropdown);
+  };
+
+  const handleDropdownChange = (selectedItems: string[]) => {
+    setExtraFields;
+    setExtraFields(selectedItems);
+    setShowDropdown(false);
+  };
   const fileInput = useRef(null);
 
   const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
       const file = e.target.files[0];
+
+       if (file && file.size > 1024 * 1024) {
+         alert("Image size exceeds 1MB");
+
+         return;
+       }
+
       const reader = new FileReader();
 
       reader.onloadend = () => {
@@ -83,8 +147,8 @@ const MainForm = () => {
               <img src={coverImage} alt="Preview" width="200" />
             </div>
           )}
-          <button onClick={handleDeleteOrReUpload}>
-            {coverImage ? "Delete" : "Re-upload"}
+          <button className="mt-2" onClick={handleDeleteOrReUpload}>
+            {coverImage ? "Delete & re-upload" : " "}
           </button>
         </FormSection>
 
@@ -101,7 +165,19 @@ const MainForm = () => {
               )}
             </div>
           ))}
-          <AddSign />
+          <Questions />
+          <AddSign onClick={handleAddSignClick} />
+
+          {showDropdown && <Dropdown onChange={handleDropdownChange} />}
+
+          {extraFields.map((field, i) => (
+            <div
+              className="flex justify-between text-xs border-b-[1px] p-4 w-full"
+              key={`extra-${i}`}
+            >
+              <span>{field}</span>
+            </div>
+          ))}
         </FormSection>
 
         <FormSection title="Profile">
