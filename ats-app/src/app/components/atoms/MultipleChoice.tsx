@@ -68,7 +68,7 @@ const MultipleChoice: React.FC = () => {
             type="checkbox"
             placeholder="check-box-item"
           />
-          <label>Enable &quot;Other&quot; options</label>
+          <label>Enable other options</label>
         </div>
         <div className="flex flex-col w-full mt-5 ">
           <label htmlFor="question">Max choice allowed</label>
