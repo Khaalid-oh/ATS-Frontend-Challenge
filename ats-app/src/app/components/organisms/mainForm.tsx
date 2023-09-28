@@ -2,18 +2,17 @@ import React, { useState, useRef } from "react";
 
 import FormSection from "./formSection";
 import { UploadOutlined } from "@ant-design/icons";
-import AddSign from "../atoms/addSign";
+import AddQuestion from "../atoms/AddQuestion";
 import ToggleField from "../atoms/ToggleField";
-import { Dropdown } from "antd-mobile";
 import Questions from "../atoms/Questions";
 
 const MainForm = () => {
 
   const attributes = {
-    coverImage: "",
+    coverImage: "http://example.com",
     personalInformation: {
       firstName: {
-        internalUse: false,
+        internalUse: true,
         show: true,
       },
       lastName: {
@@ -48,8 +47,57 @@ const MainForm = () => {
         internalUse: false,
         show: true,
       },
+      personalQuestions: [
+        {
+          id: "497f6eca-6276-4993-bfeb-53cbbbba6f08",
+          type: "Paragraph",
+          question: "string",
+          choices: ["string"],
+          maxChoice: 0,
+          disqualify: false,
+          other: false,
+        },
+      ],
     },
+    profile: {
+      education: {
+        mandatory: true,
+        show: true,
+      },
+      experience: {
+        mandatory: true,
+        show: true,
+      },
+      resume: {
+        mandatory: true,
+        show: true,
+      },
+      profileQuestions: [
+        {
+          id: "497f6eca-6276-4993-bfeb-53cbbbba6f08",
+          type: "Paragraph",
+          question: "string",
+          choices: ["string"],
+          maxChoice: 0,
+          disqualify: false,
+          other: false,
+        },
+      ],
+    },
+    customisedQuestions: [
+      {
+        id: "497f6eca-6276-4993-bfeb-53cbbbba6f08",
+        type: "Paragraph",
+        question: "string",
+        choices: ["string"],
+        maxChoice: 0,
+        disqualify: false,
+        other: false,
+      },
+    ],
   };
+
+
   const personInfo = [
     { label: "First Name" },
     { label: "Last Name" },
@@ -117,9 +165,17 @@ const MainForm = () => {
       }
     };
 
+   const [isVisible, setIsVisible] = useState<boolean>(false);
+
+   const toggleVisibility: () => void = () => {
+     setIsVisible(!isVisible);
+   };
+
+
+
   return (
     <div className="max-w-sm mx-auto mt-10">
-      <form className="flex flex-col gap-10">
+      <form className="flex flex-col gap-10 transition-all">
         <FormSection title="Upload cover image">
           {!coverImage ? (
             <div className="flex flex-col items-center justify-center h-36 w-full border-[1px] border-dashed border-gray-500 rounded-md">
@@ -165,10 +221,10 @@ const MainForm = () => {
               )}
             </div>
           ))}
-          <Questions />
-          <AddSign onClick={handleAddSignClick} />
+          {isVisible &&  <Questions />}
+          <AddQuestion onClick={toggleVisibility} />
 
-          {showDropdown && <Dropdown onChange={handleDropdownChange} />}
+          {/* {showDropdown && <Questions onChange={handleDropdownChange} />} */}
 
           {extraFields.map((field, i) => (
             <div
@@ -193,11 +249,11 @@ const MainForm = () => {
               )}
             </div>
           ))}
-          <AddSign />
+          {/* <AddQuestion /> */}
         </FormSection>
 
         <FormSection title="Additional">
-          <AddSign />
+          {/* <AddQuestion /> */}
         </FormSection>
       </form>
     </div>

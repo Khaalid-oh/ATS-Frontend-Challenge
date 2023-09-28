@@ -24,9 +24,9 @@ function Navbar() {
       <nav className="h-20 w-full shadow-lg flex items-center justify-evenly border-[0.1px] rounded-sm">
         {navBar.map((navItem, i) => (
           <div
-            className={`flex items-center justify-center border-[1px] border-y-0 border-gray-400 border-l-0 w-48 ${
+            className={`flex items-center justify-center border-[1px] border-y-0 border-gray-400 border-l-0 px-10 h-10 transition-all ${
               active === i
-                ? "text-white bg-primary h-full w-full relative transition-all rounded-sm after:top-1/2 after:border-l-primary after:h-0 after:w-0 after:border-t-[18px] after:border-t-transparent after:border-b-transparent after:border-b-[18px] after:border-l-[18px] after:content-[' '] after:absolute after:-right-[18px] after:-translate-y-[17px]"
+                ? "text-white bg-primary h-full w-[14%] relative transition-all rounded-sm after:top-1/2 after:border-l-primary after:h-0 after:w-0 after:border-t-[18px] after:border-t-transparent after:border-b-transparent after:border-b-[18px] after:border-l-[18px] after:content-[' '] after:absolute after:-right-[18px] after:-translate-y-[17px]"
                 : " "
             }`}
             key={i}

@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-
+import { CaretDownOutlined } from "@ant-design/icons";
 import { Select } from "antd";
 
 const OPTIONS = ["Apples", "Nails", "Bananas", "Helicopters"];
@@ -11,12 +11,13 @@ const Dropdown: React.FC = () => {
 
   return (
     <Select
+      className="customSelect"
       mode="multiple"
-      placeholder="Inserted are removed"
-      bordered={false}
+      placeholder="Paragraph"
+      suffixIcon={<CaretDownOutlined className="text-gray-700"/>}
       value={selectedItems}
       onChange={setSelectedItems}
-      style={{ width: "100%", height: "40px",  }}
+      style={{ width: "100%", height: "40px", fontSize: "13px" }}
       options={filteredOptions.map((item) => ({
         value: item,
         label: item,

@@ -1,3 +1,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+.customSelect .ant-select-selector {
+  border-radius: 2px;
+}
+
+.ant-select-dropdown {
+  border-radius: 2px !important;
+}
+
+.customSelect .ant-select-selection-placeholder {
+  transition: none !important;
+}
+
