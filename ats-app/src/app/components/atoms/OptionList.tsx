@@ -1,10 +1,19 @@
 import React, {useState} from "react";
 import { CaretDownOutlined } from "@ant-design/icons";
-import { Select, ConfigProvider, Space } from "antd";
+import { Select, ConfigProvider,} from "antd";
 
-const OPTIONS = ["Paragraph", "Short answer", "Yes/No", "Dropdown", "Multiple choice", "Date", "Number", "File upload", "Video question"];
+const OPTIONS = [
+  "Paragraph",
+  "Multiple choice",
+  "Yes/No",
+  "Dropdown",
+  "Date",
+  "Number",
+  "File upload",
+  "Video question",
+];
 
-const Dropdown: React.FC = () => {
+const OptionList: React.FC = () => {
   const [selectedItems, setSelectedItems] = useState<string[]>([]);
 
   const filteredOptions = OPTIONS.filter((o) => !selectedItems.includes(o));
@@ -22,7 +31,6 @@ const Dropdown: React.FC = () => {
     >
       <Select
         className="customSelect"
-        mode="multiple"
         placeholder="Paragraph"
         suffixIcon={<CaretDownOutlined className="text-gray-700" />}
         value={selectedItems}
@@ -37,4 +45,4 @@ const Dropdown: React.FC = () => {
   );
 };
 
-export default Dropdown;
+export default OptionList;

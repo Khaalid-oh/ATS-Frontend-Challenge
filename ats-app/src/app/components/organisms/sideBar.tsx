@@ -6,7 +6,7 @@ import Dp from "../atoms/dp";
 
 function SideBar() {
   return (
-    <div className="h-[200vh] w-20 shadow-lg flex items-center flex-col space-y-[520px] py-8">
+    <div className="h-[300vh] w-20 shadow-lg flex items-center flex-col space-y-[520px] py-8">
       <div className="flex flex-col gap-16">
         <div>
           <MenuOutlined style={{ fontSize: "19px" }} />
