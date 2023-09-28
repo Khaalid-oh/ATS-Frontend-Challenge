@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-
+import Image from "next/image";
 import FormSection from "./formSection";
 import { UploadOutlined, DeleteOutlined } from "@ant-design/icons";
 import AddQuestion from "../atoms/AddQuestion";
@@ -227,7 +227,7 @@ const MainForm = () => {
             </div>
           ) : (
             <div className="w-full h-full flex items-center justify-center">
-              <img src={coverImage} alt="Preview" width="200" />
+              <Image src={coverImage} alt="Preview" width="200" />
             </div>
           )}
           <button

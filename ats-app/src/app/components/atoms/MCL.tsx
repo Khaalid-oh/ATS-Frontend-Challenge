@@ -1,17 +1,7 @@
 import React, { useState } from "react";
-import { CaretDownOutlined } from "@ant-design/icons";
 import { Select, ConfigProvider } from "antd";
 
-const OPTIONS = [
-  "Paragraph",
-  "Multiple choice",
-  "Yes/No",
-  "Dropdown",
-  "Date",
-  "Number",
-  "File upload",
-  "Video question",
-];
+const OPTIONS = ["Choice 1", "Choice 2", "Choice 3", "Choice 4", "Choice 5"];
 
 const MCL: React.FC = () => {
   const [selectedItems, setSelectedItems] = useState<string[]>([]);
@@ -23,7 +13,7 @@ const MCL: React.FC = () => {
       theme={{
         components: {
           Select: {
-            fontSize: "12px",
+            fontSize: 12,
             optionPadding: "8px 12px",
           },
         },

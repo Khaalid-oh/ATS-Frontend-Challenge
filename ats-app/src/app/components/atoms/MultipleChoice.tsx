@@ -8,12 +8,16 @@ import { Select, ConfigProvider } from "antd";
 import MCL from "./MCL";
 
 const OPTIONS = [
-  "Choice 1",
-  "Choice 2",
-  "Choice 3",
-  "Choice 4",
-  "Choice 5",
+  "Paragraph",
+  "Multiple choice",
+  "Yes/No",
+  "Dropdown",
+  "Date",
+  "Number",
+  "File upload",
+  "Video question",
 ];
+
 
 const MultipleChoice: React.FC = () => {
   const [selectedItems, setSelectedItems] = useState<string[]>([]);
