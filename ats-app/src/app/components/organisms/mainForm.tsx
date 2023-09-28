@@ -5,7 +5,7 @@ import { UploadOutlined, DeleteOutlined } from "@ant-design/icons";
 import AddQuestion from "../atoms/AddQuestion";
 import ToggleField from "../atoms/ToggleField";
 import Questions from "../atoms/Paragraph";
-import DeleteQuestion from "../atoms/DeleteQuestion";
+import DelSave from "../atoms/DelSave";
 import MultipleChoice from "../atoms/MultipleChoice";
 import { handleFetchApi } from "@/app/services/fetchAPI";
 
@@ -262,7 +262,7 @@ const MainForm = () => {
           {isVisible && (
             <div className="flex flex-col w-full">
               <Questions />
-              <DeleteQuestion
+              <DelSave
                 onClick={toggleInvisibility}
                 save={() => sendData(dataToSend)}
               />
