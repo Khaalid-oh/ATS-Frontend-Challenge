@@ -30,7 +30,7 @@ const MultipleChoice: React.FC = () => {
         theme={{
           components: {
             Select: {
-              fontSize: "12px",
+              fontSize: 12,
               optionPadding: "8px 12px",
             },
           },
@@ -51,10 +51,10 @@ const MultipleChoice: React.FC = () => {
       </ConfigProvider>
 
       <div className="flex flex-col w-full mt-2 ">
-        <label htmlFor="question">Question</label>
+        <label htmlFor="quei">Question</label>
         <input
           className="w-full h-10 border-[1px] rounded-sm p-2 mt-1 hover:ring-[1px] ring-blue-400 transition-all focus:outline-none"
-          id="question"
+          id="quei"
           placeholder="Type here"
         ></input>
       </div>

@@ -23,7 +23,7 @@ const OptionList: React.FC = () => {
       theme={{
         components: {
           Select: {
-            fontSize: "12px",
+            fontSize: 12,
             optionPadding: "8px 12px",
           },
         },
