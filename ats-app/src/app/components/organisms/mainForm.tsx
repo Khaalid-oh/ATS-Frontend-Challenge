@@ -156,37 +156,30 @@ const MainForm = () => {
 
   const [extraFields, setExtraFields] = useState<string[]>([]);
 
-  const [coverImage, setCoverImage] = useState(null);
+  const [coverImage, setCoverImage] = useState<string | null>(null);
+
 
   const fileInput = useRef(null);
 
-  const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e?.target.files[0];
+ const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+   if (e.target.files && e.target.files.length > 0) {
+     const file = e.target.files[0];
 
-    if (file && file.size > 1024 * 1024) {
-      alert("Image size exceeds 1MB");
+     if (file && file.size > 1024 * 1024) {
+       alert("Image size exceeds 1MB");
+       return;
+     }
 
-      return;
-    }
+     const reader = new FileReader();
 
-    const reader = new FileReader();
+     reader.onloadend = () => {
+       setCoverImage(reader.result as string);
+     };
 
-    reader.onloadend = () => {
-      setCoverImage(reader.result);
-    };
+     reader.readAsDataURL(file);
+   }
+ };
 
-    if (file) {
-      reader.readAsDataURL(file);
-    }
-  };
-
-  const handleDeleteOrReUpload = () => {
-    if (coverImage) {
-      setCoverImage(null);
-    } else {
-      fileInput.current.click();
-    }
-  };
 
   const [isVisible, setIsVisible] = useState<boolean>(false);
 
@@ -227,13 +220,13 @@ const MainForm = () => {
             </div>
           ) : (
             <div className="w-full h-full flex items-center justify-center">
-              <Image src={coverImage} alt="Preview" width="200" />
+              <Image src={coverImage} alt="Preview" height="200" width="200" />
             </div>
           )}
           <button
             type="button"
             className="flex items-center justify-center self-start p-2 font-semibold text-red-700"
-            onClick={handleDeleteOrReUpload}
+            //onClick={handleDeleteOrReUpload}
           >
             {coverImage ? (
               <div className="flex items-center justify-center ml-2 gap-2 p-2 rounded-md hover:bg-red-50 transition-all">
