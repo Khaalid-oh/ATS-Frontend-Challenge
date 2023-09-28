@@ -13,7 +13,7 @@ const MCL: React.FC = () => {
       theme={{
         components: {
           Select: {
-            fontSize: 12,
+            fontSize: 12 ,
             optionPadding: "8px 12px",
           },
         },
