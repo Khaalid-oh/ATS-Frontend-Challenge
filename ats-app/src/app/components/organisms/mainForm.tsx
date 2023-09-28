@@ -162,7 +162,8 @@ const MainForm = () => {
   const fileInput = useRef(null);
 
  const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-   if (e.target.files && e.target.files.length > 0) {
+   
+  if (e.target.files && e.target.files.length > 0) {
      const file = e.target.files[0];
 
      if (file && file.size > 1024 * 1024) {
@@ -178,8 +179,7 @@ const MainForm = () => {
 
      reader.readAsDataURL(file);
    }
- };
-
+ };//typde error
 
   const [isVisible, setIsVisible] = useState<boolean>(false);
 
