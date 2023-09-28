@@ -12,6 +12,7 @@
     "@ant-design/icons": "^5.2.6",
     "antd": "^5.9.3",
     "antd-mobile": "^5.32.4",
+    "axios": "^1.5.1",
     "next": "latest",
     "react": "latest",
     "react-dom": "latest"

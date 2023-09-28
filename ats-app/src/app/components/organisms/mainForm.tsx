@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 
 import FormSection from "./formSection";
-import { UploadOutlined } from "@ant-design/icons";
+import { UploadOutlined, DeleteOutlined } from "@ant-design/icons";
 import AddQuestion from "../atoms/AddQuestion";
 import ToggleField from "../atoms/ToggleField";
 import Questions from "../atoms/Questions";
@@ -119,22 +119,10 @@ const MainForm = () => {
     { label: "Resume", type: "toggle-field" },
   ];
 
-  const [showDropdown, setShowDropdown] = useState(false);
-
   const [extraFields, setExtraFields] = useState<string[]>([]);
 
   const [coverImage, setCoverImage] = useState(null);
 
-  const handleAddSignClick = () => {
-    setShowDropdown;
-    setShowDropdown(!showDropdown);
-  };
-
-  const handleDropdownChange = (selectedItems: string[]) => {
-    setExtraFields;
-    setExtraFields(selectedItems);
-    setShowDropdown(false);
-  };
   const fileInput = useRef(null);
 
   const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -176,9 +164,9 @@ const MainForm = () => {
   return (
     <div className="max-w-sm mx-auto mt-10">
       <form className="flex flex-col gap-10 transition-all">
-        <FormSection title="Upload cover image">
+        <FormSection noPadding={true} title="Upload cover image">
           {!coverImage ? (
-            <div className="flex flex-col items-center justify-center h-36 w-full border-[1px] border-dashed border-gray-500 rounded-md">
+            <div className="flex flex-col items-center justify-center h-40 p-4 m-4 border-[1px] border-dashed border-gray-500 rounded-md">
               <label
                 className="flex flex-col items-center justify-center"
                 htmlFor="upload-file"
@@ -199,12 +187,27 @@ const MainForm = () => {
               />
             </div>
           ) : (
-            <div>
+            <div className="w-full h-full flex items-center justify-center">
               <img src={coverImage} alt="Preview" width="200" />
             </div>
           )}
-          <button className="mt-2" onClick={handleDeleteOrReUpload}>
-            {coverImage ? "Delete & re-upload" : " "}
+          <button
+            type="button"
+            className="flex items-center justify-center self-start p-2 font-semibold text-red-700"
+            onClick={handleDeleteOrReUpload}
+          >
+            {coverImage ? (
+              <div className="flex items-center justify-center ml-2 gap-2 p-2 rounded-md hover:bg-red-50 transition-all">
+                <DeleteOutlined 
+                style={{fontSize: "16px"}}
+                />
+                <span className="">
+                  Delete & re-upload
+                </span>
+              </div>
+            ) : (
+              " "
+            )}
           </button>
         </FormSection>
 
@@ -221,19 +224,17 @@ const MainForm = () => {
               )}
             </div>
           ))}
-          {isVisible &&  <Questions />}
+          {isVisible && <Questions />}
           <AddQuestion onClick={toggleVisibility} />
 
-          {/* {showDropdown && <Questions onChange={handleDropdownChange} />} */}
-
-          {extraFields.map((field, i) => (
+          {/* {extraFields.map((field, i) => (
             <div
               className="flex justify-between text-xs border-b-[1px] p-4 w-full"
               key={`extra-${i}`}
             >
               <span>{field}</span>
             </div>
-          ))}
+          ))} */}
         </FormSection>
 
         <FormSection title="Profile">
@@ -252,9 +253,7 @@ const MainForm = () => {
           {/* <AddQuestion /> */}
         </FormSection>
 
-        <FormSection title="Additional">
-          {/* <AddQuestion /> */}
-        </FormSection>
+        <FormSection title="Additional">{/* <AddQuestion /> */}</FormSection>
       </form>
     </div>
   );
