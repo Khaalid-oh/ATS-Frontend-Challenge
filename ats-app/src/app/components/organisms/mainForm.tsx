@@ -159,7 +159,8 @@ const MainForm = () => {
   const [coverImage, setCoverImage] = useState<string | null>(null);
 
 
-  const fileInput = useRef(null);
+  const fileInput = useRef<HTMLInputElement | null>(null);
+
 
  const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
    
@@ -179,7 +180,17 @@ const MainForm = () => {
 
      reader.readAsDataURL(file);
    }
- };//typde error
+    
+ };
+
+ const handleDeleteOrReUpload = () => {
+   if (coverImage) {
+     setCoverImage(null);
+   } else if (fileInput.current) {
+     fileInput.current.click();
+   }
+ };
+
 
   const [isVisible, setIsVisible] = useState<boolean>(false);
 
@@ -226,7 +237,7 @@ const MainForm = () => {
           <button
             type="button"
             className="flex items-center justify-center self-start p-2 font-semibold text-red-700"
-            //onClick={handleDeleteOrReUpload}
+            onClick={handleDeleteOrReUpload}
           >
             {coverImage ? (
               <div className="flex items-center justify-center ml-2 gap-2 p-2 rounded-md hover:bg-red-50 transition-all">
