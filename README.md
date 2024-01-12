@@ -10,7 +10,7 @@ Implement API - Ensure API schema documentation is implemented
 Submit the GitHub repo link with the codes
 You can see how this UI is working at the moment - https://www.awesomescreenshot.com/video/21000589?key=3ef52c56e2261c8e9af5f5b2d13495d5
 
- API Instruction::
+ API Instruction:
 YAML file for API: https://www.dropbox.com/s/cf92anqoqlg6p19/Application%20Form.yaml?dl=0
 
 Download https://stoplight.io/open-source/prism - to run the YAML
